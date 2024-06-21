@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Apple+SD+Gothic+Neo:wght@500&display=swap');
+@font-face {
+    font-family: 'applesdgothicneosb00';
+    src: url('path-to-fonts/applesdgothicneosb00.woff2') format('woff2'),
+         url('path-to-fonts/applesdgothicneosb00.woff') format('woff');
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: #e6f3ff;
+    color: rgb(47, 81, 173);
+    width: 100%;
+    height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+}
+
+.logo img {
+    max-width: 120px;
+    height: auto;
+}
+
+.title h1 {
+    margin: 0;
+    font-family: 'Apple SD Gothic Neo', sans-serif;
+    font-size: 26pt;
+    line-height: 1.2;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start */
+}
+
+#slider {
+    width: calc(9 * 120px + 8 * 10px); /* Width of columns 1 to 9 */
+    height: 600px; /* Align with the height of the purple box */
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+#imageContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+#imageSlider {
+    width: 11600px; /* 10 images, each 1160px wide */
+    display: flex;
+    transition: transform 0.5s;
+}
+
+#imageSlider div {
+    min-width: 1160px;
+}
+
+#imageSlider div img {
+    width: 100%;
+    height: 100%;
+}
+
+#interface {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+#leftArrow, #rightArrow {
+    pointer-events: all; /* Allow clicks on the arrows */
+}
+
+#leftArrow {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+#rightArrow {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+#bottomBtn {
+    display: flex;
+    width: 520px;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    z-index: 10;
+}
+
+#bottomBtn button {
+    padding: 3px 8px;
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0.3);
+    pointer-events: all; /* Allow clicks on the buttons */
+}
+
+#bottomBtn button:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.blue-box {
+    width: calc(9 * 120px + 8 * 10px); /* Width of columns 1 to 9 */
+    height: 360px;
+    background-color: rgb(250, 250, 250);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: -1px;
+}
+
+.pink-box {
+    width: 120px;
+    height: 29px;
+    margin-left: calc(120px + 10px);
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 24px;
+    font-family: 'applesdgothicneosb00', sans-serif; /* 폰트 설정 */
+}
+
+.ivory-container {
+    display: flex;
+    align-items: center;
+    margin-left: calc(120px + 10px);
+    margin-top: 22px;
+}
+
+.gray-circle {
+    width: 58px;
+    height: 58px;
+    background-color: gray;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.ivory-box {
+    width: calc(7 * 120px + 6 * 10px - 58px - 10px); /* Width of columns 2 to 8 minus the gray circle and margin */
+    height: 58px;
+    background-color: ivory;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.second-ivory-box {
+    margin-top: 22px;
+}
+
+.third-ivory-box {
+    margin-top: 22px;
+}
+
+.orange-box {
+    width: calc(3 * 120px + 2 * 10px);
+    height: calc(600px + 360px);
+    background-color: rgb(250, 250, 250);
+    margin-left: calc(9 * 120px + 8 * 10px);
+    margin-top: -960px;
+    position: relative;
+}
+
+.red-box {
+    width: calc(100% - 60px);
+    height: 35px;
+    position: absolute;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    color: rgb(0, 0, 0);
+    font-family: 'applesdgothicneosb00', sans-serif; /* 폰트 설정 */
+    font-size: 18pt;
+}
+
+.link-box {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    align-items: flex-start;
+}
+
+.link-box:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.gray-box {
+    width: 123px;
+    height: 103px;
+    background-color: gray;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gray-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.yellow-box {
+    width: calc(3 * 120px + 2 * 10px - 15px - (123px + 10px + 13px + 8px + 15px));
+    height: 103px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.yellow-box p {
+    margin: 0;
+    font-size: 20px;
+    color: black;
+}
+
+.magenta-box {
+    width: 13px;
+    height: 103px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+.link-box.first-row {
+    top: 69px;
+    left: 15px;
+    position: absolute;
+}
+
+.link-box.second {
+    top: calc(69px + 103px + 48px);
+    left: 15px;
+    position: absolute;
+}
+
+.link-box.third {
+    top: calc(69px + 2 * (103px + 48px));
+    left: 15px;
+    position: absolute;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 120px);
+    grid-gap: 10px;
+    width: 1440px;
+    margin: 20px 0;
+}
+
+.grid-item {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5em;
+}

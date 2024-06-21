@@ -59,12 +59,12 @@ main {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align items to the start */
+    align-items: flex-start;
 }
 
 #slider {
-    width: calc(9 * 120px + 8 * 10px); /* Width of columns 1 to 9 */
-    height: 600px; /* Align with the height of the purple box */
+    width: 1080px; /* 너비를 9 * 120px로 조정 */
+    height: 600px; /* 고정된 높이 */
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -76,21 +76,26 @@ main {
     height: 100%;
     display: flex;
     overflow: hidden;
+    align-items: center; /* 이미지 수직 가운데 정렬 */
+    justify-content: center; /* 이미지 수평 가운데 정렬 */
 }
 
 #imageSlider {
-    width: 11600px; /* 10 images, each 1160px wide */
     display: flex;
     transition: transform 0.5s;
 }
 
 #imageSlider div {
-    min-width: 1160px;
+    flex: 0 0 1160px; /* 이미지의 너비를 고정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #imageSlider div img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
 }
 
 #interface {
@@ -100,11 +105,16 @@ main {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    pointer-events: none; /* Allow clicks to pass through */
+    pointer-events: none;
 }
 
 #leftArrow, #rightArrow {
-    pointer-events: all; /* Allow clicks on the arrows */
+    pointer-events: all;
+    transition: all 0.3s ease; /* 부드러운 전환 */
+}
+
+#leftArrow:hover, #rightArrow:hover {
+    transform: scale(1.2); /* 호버 시 크기 증가 */
 }
 
 #leftArrow {
@@ -125,28 +135,38 @@ main {
 
 #bottomBtn {
     display: flex;
-    width: 520px;
-    height: 40px;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: center; /* 버튼을 가운데로 정렬 */
     align-items: center;
     position: absolute;
     bottom: 10px;
     z-index: 10;
+    gap: 12px; /* 버튼 사이의 간격 추가 */
 }
 
 #bottomBtn button {
     padding: 3px 8px;
-    border: 0px;
-    background-color: rgba(255, 255, 255, 0.3);
-    pointer-events: all; /* Allow clicks on the buttons */
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.3); 
+    pointer-events: all;
+    border-radius: 2px; 
+    transition: all 0.3s ease; 
+}
+
+#bottomBtn button.active {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6); /* 활성화된 버튼을 원으로 만들기*/
+    padding: 0;
 }
 
 #bottomBtn button:hover {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.6); 
 }
 
 .blue-box {
-    width: calc(9 * 120px + 8 * 10px); /* Width of columns 1 to 9 */
+    width: 1080px; 
     height: 360px;
     background-color: rgb(250, 250, 250);
     display: flex;
@@ -154,26 +174,28 @@ main {
     align-items: flex-start;
     box-sizing: border-box;
     position: relative;
-    margin-top: -1px;
+    margin-top: 9px; 
 }
 
 .pink-box {
     width: 120px;
     height: 29px;
-    margin-left: calc(120px + 10px);
+    margin-left: 130px;
     margin-top: 22px;
     display: flex;
     align-items: center;
     padding-left: 10px;
     font-size: 24px;
-    font-family: 'applesdgothicneosb00', sans-serif; /* 폰트 설정 */
+    font-family: 'applesdgothicneosb00', sans-serif;
 }
 
 .ivory-container {
     display: flex;
     align-items: center;
-    margin-left: calc(120px + 10px);
-    margin-top: 22px;
+    margin-left: 130px;
+    margin-top: 26px; 
+    opacity: 0; /* 댓글 처음에는 숨김 */
+    transition: opacity 0.5s ease-in-out; 
 }
 
 .gray-circle {
@@ -185,28 +207,29 @@ main {
 }
 
 .ivory-box {
-    width: calc(7 * 120px + 6 * 10px - 58px - 10px); /* Width of columns 2 to 8 minus the gray circle and margin */
+    width: calc(720px - 68px);
     height: 58px;
     background-color: ivory;
     display: flex;
     align-items: center;
     padding-left: 10px;
+    font-size: 18px; 
 }
 
 .second-ivory-box {
-    margin-top: 22px;
+    margin-top: 26px; 
 }
 
 .third-ivory-box {
-    margin-top: 22px;
+    margin-top: 26px; 
 }
 
 .orange-box {
-    width: calc(3 * 120px + 2 * 10px);
-    height: calc(600px + 360px);
+    width: 370px; 
+    height: 960px; /* 높이 고정*/
     background-color: rgb(250, 250, 250);
-    margin-left: calc(9 * 120px + 8 * 10px);
-    margin-top: -960px;
+    margin-left: 1080px; 
+    margin-top: -950px;
     position: relative;
 }
 
@@ -214,12 +237,12 @@ main {
     width: calc(100% - 60px);
     height: 35px;
     position: absolute;
-    top: 20px;
+    top: 0; /* 오렌지색 박스의 상단에 맞춤 */
     display: flex;
     align-items: center;
     padding-left: 15px;
     color: rgb(0, 0, 0);
-    font-family: 'applesdgothicneosb00', sans-serif; /* 폰트 설정 */
+    font-family: 'applesdgothicneosb00', sans-serif;
     font-size: 18pt;
 }
 
@@ -228,13 +251,7 @@ main {
     display: flex;
     cursor: pointer;
     align-items: flex-start;
-}
-
-.link-box:hover {
-    background-color: #f0f0f0;
-    border-radius: 4px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    margin-top: 48px; /* 박스 사이 간격을 통일 */
 }
 
 .gray-box {
@@ -254,7 +271,7 @@ main {
 }
 
 .yellow-box {
-    width: calc(3 * 120px + 2 * 10px - 15px - (123px + 10px + 13px + 8px + 15px));
+    flex-grow: 1;
     height: 103px;
     margin-left: 10px;
     display: flex;
@@ -274,26 +291,9 @@ main {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    font-size: 16px;
+    font-size: 0; /* 텍스트 크기를 0으로 설정하여 텍스트 숨기기 */
     color: rgb(0, 0, 0);
-}
-
-.link-box.first-row {
-    top: 69px;
-    left: 15px;
-    position: absolute;
-}
-
-.link-box.second {
-    top: calc(69px + 103px + 48px);
-    left: 15px;
-    position: absolute;
-}
-
-.link-box.third {
-    top: calc(69px + 2 * (103px + 48px));
-    left: 15px;
-    position: absolute;
+    font-family: 'applesdgothicneosb00', sans-serif; 
 }
 
 .grid-container {

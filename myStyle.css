@@ -13,13 +13,27 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative; /* 새로운 배경을 위한 위치 설정 */
+    z-index: 1;
+    cursor: url('images/cursor_1.cur'), auto; /* 기본 커서 설정 */
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/background.png') no-repeat center center fixed; /* 배경 이미지 설정 */
+    background-size: cover;
+    z-index: -1;
 }
 
 header {
-    background-color: #e6f3ff;
-    color: rgb(47, 81, 173);
+    background-color: rgba(0, 0, 0, 0.8); /* 반투명 검은색 배경 */
+    color: #fff; /* 텍스트 색상을 흰색으로 */
     width: 100%;
-    height: 115px;
+    height: 87px; /* 높이를 87px로 변경 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,7 +45,7 @@ header {
     grid-gap: 10px;
     align-items: center;
     width: 100%;
-    max-width: 1440px;
+    max-width: 1080px; /* 슬라이더의 폭에 맞춤 */
 }
 
 .logo img {
@@ -42,8 +56,9 @@ header {
 .title h1 {
     margin: 0;
     font-family: 'Apple SD Gothic Neo', sans-serif;
-    font-size: 26pt;
+    font-size: 24px; /* 텍스트 크기를 줄임 */
     line-height: 1.2;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
 }
 
 main {
@@ -59,7 +74,7 @@ main {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* 가운데 정렬 */
 }
 
 #slider {
@@ -67,7 +82,7 @@ main {
     height: 600px; /* 고정된 높이 */
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 0; /* 상단 마진 제거 */
     position: relative;
 }
 
@@ -151,6 +166,7 @@ main {
     pointer-events: all;
     border-radius: 2px; 
     transition: all 0.3s ease; 
+    cursor: url('images/cursor_2.cur'), auto; /* 버튼에 호버 시 커서 변경 */
 }
 
 #bottomBtn button.active {
@@ -167,48 +183,106 @@ main {
 
 .blue-box {
     width: 1080px; 
-    height: 360px;
-    background-color: rgb(250, 250, 250);
+    height: auto; /* 높이 자동 조정 */
+    background-color: rgba(0, 0, 0, 0.8); /* 반투명 검은색 배경 */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     box-sizing: border-box;
     position: relative;
-    margin-top: 9px; 
+    margin-top: 0; /* 슬라이더와 파란색 박스 사이의 틈 제거 */
+}
+
+.text-box-container {
+    display: flex;
+    gap: 4px; /* 핑크색 박스와 갈색 박스 사이의 간격 설정 */
+    margin-left: 130px;
+    margin-top: 14px; /* 8px 위로 올림 */
+    position: relative; /* 상대 위치 조정 */
 }
 
 .pink-box {
     width: 120px;
-    height: 29px;
-    margin-left: 130px;
-    margin-top: 22px;
+    height: 29px; /* 갈색 박스와 동일한 높이로 설정 */
     display: flex;
     align-items: center;
+    justify-content: flex-start; /* 텍스트를 왼쪽 정렬 */
     padding-left: 10px;
-    font-size: 24px;
+    font-size: 24px; /* 텍스트 크기 이전 크기로 */
     font-family: 'applesdgothicneosb00', sans-serif;
+    background-color: pink;
+    position: relative;
+    top: -8px; /* 높이를 갈색 박스와 맞추기 위해 이동 */
+}
+
+.brown-box {
+    width: 120px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 텍스트를 왼쪽 정렬 */
+    font-size: 16px; /* 텍스트 크기 8px 줄임 */
+    font-family: 'Apple SD Gothic Neo', sans-serif;
+    font-weight: 700; /* 폰트 두께를 더 두껍게 설정 */
+    background-color: #d2b48c; /* 연한 갈색 */
+    color: red; /* 텍스트 색 빨간색 */
+    margin-left: -2px; /* 간격을 4px 좁게 조정하기 위해 음수 마진 설정 */
+    position: relative; /* 상대 위치 조정 */
+    top: -8px; /* 8px 위로 올림 */
+}
+
+.red-circle {
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    border-radius: 50%;
+    align-self: center;
+    animation: blink 1s infinite;
+    position: relative; /* 상대 위치 조정 */
+    top: -8px; /* 8px 위로 올림 */
+    left: -2px; /* 2px 왼쪽으로 이동 */
+    margin-right: -2px; /* 갈색 텍스트와의 간격을 4px 더 좁게 조정 */
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 .ivory-container {
     display: flex;
     align-items: center;
     margin-left: 130px;
-    margin-top: 26px; 
-    opacity: 0; /* 댓글 처음에는 숨김 */
-    transition: opacity 0.5s ease-in-out; 
+    margin-top: 10px; /* 간격 10px로 설정 */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    position: relative; /* 상대 위치 조정 */
+    top: -12px; /* 4px + 8px 위로 올림 */
 }
 
 .gray-circle {
-    width: 58px;
-    height: 58px;
+    width: 56px; /* 지름 2px 줄임 */
+    height: 56px; /* 지름 2px 줄임 */
     background-color: gray;
     border-radius: 50%;
     margin-right: 10px;
+    overflow: hidden; /* 원 안에 이미지가 잘리지 않도록 */
+}
+
+.gray-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 원 안에 맞게 조정 */
 }
 
 .ivory-box {
-    width: calc(720px - 68px);
-    height: 58px;
+    width: 800px;
+    height: 56px; /* 높이 2px 줄임 */
     background-color: ivory;
     display: flex;
     align-items: center;
@@ -216,98 +290,7 @@ main {
     font-size: 18px; 
 }
 
-.second-ivory-box {
-    margin-top: 26px; 
-}
-
-.third-ivory-box {
-    margin-top: 26px; 
-}
-
-.orange-box {
-    width: 370px; 
-    height: 960px; /* 높이 고정*/
-    background-color: rgb(250, 250, 250);
-    margin-left: 1080px; 
-    margin-top: -950px;
-    position: relative;
-}
-
-.red-box {
-    width: calc(100% - 60px);
-    height: 35px;
-    position: absolute;
-    top: 0; /* 오렌지색 박스의 상단에 맞춤 */
-    display: flex;
-    align-items: center;
-    padding-left: 15px;
-    color: rgb(0, 0, 0);
-    font-family: 'applesdgothicneosb00', sans-serif;
-    font-size: 18pt;
-}
-
-.link-box {
-    position: relative;
-    display: flex;
-    cursor: pointer;
-    align-items: flex-start;
-    margin-top: 48px; /* 박스 사이 간격을 통일 */
-}
-
-.gray-box {
-    width: 123px;
-    height: 103px;
-    background-color: gray;
-    margin-left: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.gray-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.yellow-box {
-    flex-grow: 1;
-    height: 103px;
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.yellow-box p {
-    margin: 0;
-    font-size: 20px;
-    color: black;
-}
-
-.magenta-box {
-    width: 13px;
-    height: 103px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    font-size: 0; /* 텍스트 크기를 0으로 설정하여 텍스트 숨기기 */
-    color: rgb(0, 0, 0);
-    font-family: 'applesdgothicneosb00', sans-serif; 
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(12, 120px);
-    grid-gap: 10px;
-    width: 1440px;
-    margin: 20px 0;
-}
-
-.grid-item {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 1.5em;
+.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

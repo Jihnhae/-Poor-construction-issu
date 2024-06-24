@@ -210,7 +210,7 @@ main {
     padding-left: 10px;
     font-size: 24px; /* 텍스트 크기 이전 크기로 */
     font-family: 'applesdgothicneosb00', sans-serif;
-    background-color: pink;
+    color: white;
     position: relative;
     top: -8px; /* 높이를 갈색 박스와 맞추기 위해 이동 */
 }
@@ -221,10 +221,9 @@ main {
     display: flex;
     align-items: center;
     justify-content: flex-start; /* 텍스트를 왼쪽 정렬 */
-    font-size: 16px; /* 텍스트 크기 8px 줄임 */
+    font-size: 14px; /* 텍스트 크기 8px 줄임 */
     font-family: 'Apple SD Gothic Neo', sans-serif;
     font-weight: 700; /* 폰트 두께를 더 두껍게 설정 */
-    background-color: #d2b48c; /* 연한 갈색 */
     color: red; /* 텍스트 색 빨간색 */
     margin-left: -2px; /* 간격을 4px 좁게 조정하기 위해 음수 마진 설정 */
     position: relative; /* 상대 위치 조정 */
@@ -281,16 +280,17 @@ main {
 }
 
 .ivory-box {
-    width: 800px;
+    width: 760px;
     height: 56px; /* 높이 2px 줄임 */
-    background-color: ivory;
+    background-color: rgba(240, 240, 240, 0.692);
     display: flex;
     align-items: center;
     padding-left: 10px;
-    font-size: 18px; 
+    font-size: 15px; 
 }
 
 .visible {
     opacity: 1;
     transform: translateY(0);
 }
+

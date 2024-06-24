@@ -1,24 +1,12 @@
-function openLink(url) {
-    window.open(url, '_blank');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#link1').addEventListener('click', () => {
-        openLink('https://www.khan.co.kr/national/labor/article/202311190900021');
-    });
-    document.querySelector('#link2').addEventListener('click', () => {
-        openLink('https://www.ytn.co.kr/_ln/0103_202308021319022200');
-    });
-    document.querySelector('#link3').addEventListener('click', () => {
-        openLink('https://www.sisajournal-e.com/news/articleView.html?idxno=231578');
-    });
-});
-
 let nowIndex = 1;
+let visibleIvoryBoxes = new Set(); // 현재 보이는 아이보리 박스들을 추적하는 집합
 
 document.addEventListener('DOMContentLoaded', () => {
     const imageSlider = document.querySelector('#imageSlider');
-    const ivoryContainers = document.querySelectorAll('.ivory-container');
+    const ivoryBox1 = document.getElementById('ivoryBox1');
+    const ivoryBox2 = document.getElementById('ivoryBox2');
+    const ivoryBox3 = document.getElementById('ivoryBox3');
+    const ivoryBox4 = document.getElementById('ivoryBox4');
 
     const bottomBtn01 = document.querySelector('#imgTo1');
     const bottomBtn02 = document.querySelector('#imgTo2');
@@ -58,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const offset = (index - 1) * 1160;
         imageSlider.style.transform = `translateX(-${offset}px)`;
         nowIndex = index;
-        updateIvoryContainers();
+        updateIvoryBoxes();
         updateActiveButton();
     }
 
@@ -76,13 +64,26 @@ document.addEventListener('DOMContentLoaded', () => {
         moveToIndex(nowIndex);
     }
 
-    function updateIvoryContainers() {
-        ivoryContainers.forEach((container, idx) => {
-            if (nowIndex > 5 && idx < nowIndex - 5) {
-                container.style.opacity = '1';
-            } else {
-                container.style.opacity = '0';
-            }
+    function updateIvoryBoxes() {
+        if (nowIndex >= 2) {
+            ivoryBox1.classList.add('visible');
+            visibleIvoryBoxes.add(ivoryBox1);
+        }
+        if (nowIndex >= 6) {
+            ivoryBox2.classList.add('visible');
+            visibleIvoryBoxes.add(ivoryBox2);
+        }
+        if (nowIndex >= 8) {
+            ivoryBox3.classList.add('visible');
+            visibleIvoryBoxes.add(ivoryBox3);
+        }
+        if (nowIndex >= 10) {
+            ivoryBox4.classList.add('visible');
+            visibleIvoryBoxes.add(ivoryBox4);
+        }
+
+        visibleIvoryBoxes.forEach(box => {
+            box.classList.add('visible');
         });
     }
 
@@ -96,5 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    moveToIndex(nowIndex); // Initialize the slider position and ivory containers visibility
+    moveToIndex(nowIndex); // Initialize the slider position and ivory boxes visibility
 });
+
